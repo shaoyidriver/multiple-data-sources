@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.dao.back.BackUserDao" >
+  <resultMap id="BaseResultMap" type="com.sy.model.back.BackUser" >
+    <id column="PK_ID" property="pkId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="TIMESTAMP" property="timestamp" jdbcType="TIMESTAMP" />
+    <result column="enble" property="enble" jdbcType="CHAR" />
+    <result column="comminuty_type" property="comminutyType" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="mobliephone" property="mobliephone" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="error_count" property="errorCount" jdbcType="INTEGER" />
+    <result column="doctor_id" property="doctorId" jdbcType="VARCHAR" />
+    <result column="doctor_no" property="doctorNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PK_ID, user_name, password, gender, real_name, TIMESTAMP, enble, comminuty_type, 
+    sort, user_status, mobliephone, position, intro, address, error_count, doctor_id, 
+    doctor_no
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jh_system_user
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from jh_system_user
+    where PK_ID = #{pkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jh_system_user
+    where PK_ID = #{pkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sy.model.back.BackUser" >
+    insert into jh_system_user (PK_ID, user_name, password, 
+      gender, real_name, TIMESTAMP, 
+      enble, comminuty_type, sort, 
+      user_status, mobliephone, position, 
+      intro, address, error_count, 
+      doctor_id, doctor_no)
+    values (#{pkId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP}, 
+      #{enble,jdbcType=CHAR}, #{comminutyType,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{userStatus,jdbcType=INTEGER}, #{mobliephone,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{errorCount,jdbcType=INTEGER}, 
+      #{doctorId,jdbcType=VARCHAR}, #{doctorNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sy.model.back.BackUser" >
+    insert into jh_system_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        PK_ID,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP,
+      </if>
+      <if test="enble != null" >
+        enble,
+      </if>
+      <if test="comminutyType != null" >
+        comminuty_type,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="mobliephone != null" >
+        mobliephone,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="intro != null" >
+        intro,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="errorCount != null" >
+        error_count,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="doctorNo != null" >
+        doctor_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enble != null" >
+        #{enble,jdbcType=CHAR},
+      </if>
+      <if test="comminutyType != null" >
+        #{comminutyType,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="mobliephone != null" >
+        #{mobliephone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCount != null" >
+        #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorNo != null" >
+        #{doctorNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sy.model.back.BackUser" >
+    update jh_system_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enble != null" >
+        enble = #{enble,jdbcType=CHAR},
+      </if>
+      <if test="comminutyType != null" >
+        comminuty_type = #{comminutyType,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="mobliephone != null" >
+        mobliephone = #{mobliephone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCount != null" >
+        error_count = #{errorCount,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorNo != null" >
+        doctor_no = #{doctorNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PK_ID = #{pkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sy.model.back.BackUser" >
+    update jh_system_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      TIMESTAMP = #{timestamp,jdbcType=TIMESTAMP},
+      enble = #{enble,jdbcType=CHAR},
+      comminuty_type = #{comminutyType,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      mobliephone = #{mobliephone,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      error_count = #{errorCount,jdbcType=INTEGER},
+      doctor_id = #{doctorId,jdbcType=VARCHAR},
+      doctor_no = #{doctorNo,jdbcType=VARCHAR}
+    where PK_ID = #{pkId,jdbcType=INTEGER}
+  </update>
+</mapper>
